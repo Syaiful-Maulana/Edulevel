@@ -46,7 +46,7 @@
                             @method('PUT')
                             @csrf
                             <div class="form-group">
-                                <label>Nama Program</label>
+                                <label>Nama Sekolah</label>
                                 <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $program->name) }}" autofocus>
                                 @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>

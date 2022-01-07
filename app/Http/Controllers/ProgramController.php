@@ -29,7 +29,7 @@ class ProgramController extends Controller
     public function create()
     {
 
-        $edulevels = Edulevel::all();
+        $edulevels = Edulevel::paginate(5);
         return view('program/create', compact('edulevels'));
     }
 
@@ -50,25 +50,6 @@ class ProgramController extends Controller
         'edulevel_id.required' => 'Jenjang tidak boleh kosong'
     ]);
     
-    // cara 1
-    // $program = new Program;
-    // $program->name = $request->name;
-    // $program->edulevel_id = $request->edulevel_id;
-    // $program->student_price = $request->student_price;
-    // $program->student_max = $request->student_max;
-    // $program->info = $request->info;
-    // $program->save();
-
-    // cara 2 
-    // $program = Program::create([
-    //     'name' => $request->name,
-    //     'edulevel_id' => $request->edulevel_id,
-    //     'student_price' => $request->student_price,
-    //     'student_max' => $request->student_max,
-    //     'info' => $request->info
-    // ]);
-
-    // cara 3 cepat, syarat : nama table dan deklarasinya harus sama
     Program::create($request->all());
 
 
@@ -120,15 +101,6 @@ class ProgramController extends Controller
         'edulevel_id.required' => 'Jenjang tidak boleh kosong'
     ]);
 
-    // cara 1
-    // $program->name = $request->name;
-    // $program->edulevel_id = $request->edulevel_id;
-    // $program->student_price = $request->student_price;
-    // $program->student_max = $request->student_max;
-    // $program->info = $request->info;
-    // $program->save();
-
-    // cara 2
     Program::where('id', $program->id)
       ->update([    
             'name' => $request->name,
@@ -152,28 +124,9 @@ class ProgramController extends Controller
     public function destroy(Program $program)
     {
         $program->delete();
+        
         return redirect('program')->with('status', 'Program Berhasil Di Hapus');
     }
-    public function trash()
-    {
-        $program = Program::onlyTrashed()->get();
-        return view('program.trash', compact('program'));
-    }
-    public function restore($id= null)
-    {
-        if($id != null)
-        {
-            $program = Program::onlyTrashed()
-                       -> where('id',$id)
-                       -> restore();
-        } else{
-            $program = Program::onlyTrashed()->restore();
-        }
 
-        return view('program.trash')->with('status', 'Program Berhasil direstore');
-    }
-    public function delete()
-    {
 
-    }
 }

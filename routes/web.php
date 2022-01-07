@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\EdulevelController;
 use App\Http\Controllers\ProgramController;
 /*
@@ -17,18 +18,23 @@ use App\Http\Controllers\ProgramController;
 Route::get('/', function () {
     return view('welcome', ['title' => 'Framework']);
 });
-Route::get('home', function () {
-    return view('home');
+Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::post('postLogin', [LoginController::class, 'postLogin'])->name('postLogin');
+Route::get('register',[LoginController::class, 'register'])->name('register');
+Route::post('simpanRegistrasi',[LoginController::class, 'simpanRegistrasi'])->name('simpanRegistrasi');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::group(['middleware' => ['auth']], function (){
+    Route::resource('program', ProgramController::class);
+    Route::get('home', function () {
+        return view('home');
+    });
+    
+    Route::get('edulevel', [EdulevelController::class, 'data']);
+    Route::get('edulevel/add', [EdulevelController::class, 'add']);
+    Route::post('edulevel', [EdulevelController::class, 'addProcess']);
+    Route::get('edulevel/edit/{id}', [EdulevelController::class, 'edit']);
+    Route::patch('edulevel/{id}', [EdulevelController::class, 'editProcess']);
+    Route::delete('edulevel/{id}', [EdulevelController::class, 'delete']);
+
 });
-
-Route::get('edulevel', [EdulevelController::class, 'data']);
-Route::get('edulevel/add', [EdulevelController::class, 'add']);
-Route::post('edulevel', [EdulevelController::class, 'addProcess']);
-Route::get('edulevel/edit/{id}', [EdulevelController::class, 'edit']);
-Route::patch('edulevel/{id}', [EdulevelController::class, 'editProcess']);
-Route::delete('edulevel/{id}', [EdulevelController::class, 'delete']);
-
-Route::get('program/trash', [ProgramController::class, 'trash']);
-Route::get('program/restore/{id?}/', [ProgramController::class, 'restore']);
-Route::get('program/delete/{id?}/', [ProgramController::class, 'delete']);
-Route::resource('program', ProgramController::class);

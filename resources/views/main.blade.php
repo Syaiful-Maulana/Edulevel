@@ -27,7 +27,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./">Framework</a>
+                <a class="navbar-brand" href="./">Edulevels</a>
                 <a class="navbar-brand hidden" href="./"></a>
             </div>
 
@@ -41,6 +41,9 @@
                     </li>
                     <li class="active">
                         <a href="{{url('program')}}"> <i class="menu-icon fa fa-puzzle-piece"></i>Program</a>
+                    </li>
+                    <li class="active">
+                        <a href="{{ route('logout')}}"> <i class="menu-icon fa fa-sign-out"></i>Logout</a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

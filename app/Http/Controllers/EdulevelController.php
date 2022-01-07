@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Edulevel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class EdulevelController extends Controller
     public function data()
     {     
         $edulevels = DB::table('edulevels')->get();
-        
+        $edulevels = Edulevel::paginate(5);     
         // return view('edulevel.data',['edulevels'=> $edulevels]);
         return view('edulevel.data')->with('edulevels', $edulevels);
     }

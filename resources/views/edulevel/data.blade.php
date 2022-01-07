@@ -49,15 +49,15 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Name</th>
-                            <th>Description</th>
+                            <th>Jenjang</th>
+                            <th>Keterangan</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($edulevels as $item)
+                        @foreach ($edulevels as $key => $item)
                             <tr>
-                                <td>{{$loop->iteration}}</td>
+                                <td>{{ $edulevels->firstItem() + $key}}</td>
                                 <td>{{ $item->name}}</td>
                                 <td>{{ $item->desc}}</td>
                                 <td class="text-center">
@@ -78,6 +78,18 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="pull-left"> 
+                    Showing
+                    {{ $edulevels->firstItem() }}
+                    to
+                    {{ $edulevels->lastItem() }}
+                    of
+                    {{ $edulevels->total() }}
+                    entries
+                </div>
+                <div class="pull-right"> 
+                    {{ $edulevels->links()}}
+                </div>
             </div>
         </div>
     </div>

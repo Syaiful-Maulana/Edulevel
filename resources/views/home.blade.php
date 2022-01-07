@@ -27,7 +27,8 @@
     
 <div class="content mt-3">
     <div class="animated fadeIn">
-        Isi Home
+        <h2 class="text-center">Selamat Datang di Website Kelola Jenjang pendidikan di Kabupaten Kudus</h2>
+        
     </div>
 </div> 
 @endsection

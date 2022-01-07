@@ -45,7 +45,7 @@
                         <form action="{{ url('edulevel')}}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label>Nama Jenjang</label>
+                                <label>Jenjang</label>
                                 <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" autofocus>
                                 @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>

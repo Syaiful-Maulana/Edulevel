@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Edulevel')
+@section('title', 'Program')
 
 @section('breadcrumbs')
 <div class="breadcrumbs">
@@ -39,9 +39,9 @@
                     <strong>Data Program</strong>
                 </div>
                 <div class="pull-right">
-                    <a href="{{ url('program/trash')}}" class="btn btn-danger btn-sm">
+                    {{-- <a href="{{ url('program/trash')}}" class="btn btn-danger btn-sm">
                         <i class="fa fa-trash"></i> Trash
-                    </a>
+                    </a> --}}
                     <a href="{{ url('program/create')}}" class="btn btn-success btn-sm">
                         <i class="fa fa-plus"></i> Add
                     </a>
@@ -52,15 +52,15 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Program</th>
-                            <th>Edulevel</th>
+                            <th>Nama Sekolah</th>
+                            <th>Jenjang</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($program as $key => $item)
                             <tr>
-                                <td>{{$program->firstItem() + $key}}</td>
+                                <td>{{$program-> firstItem()  +$key}}</td>
                                 <td>{{ $item->name}}</td>
                                 <td>{{ $item->edulevel->name}}</td>
                                 <td class="text-center">
@@ -91,7 +91,7 @@
                     {{ $program->lastItem() }}
                     of
                     {{ $program->total() }}
-                    esntries
+                    entries
                 </div>
                 <div class="pull-right"> 
                     {{ $program->links()}}

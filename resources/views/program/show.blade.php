@@ -45,19 +45,19 @@
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
-                                <th style="width: 30%">Edulevel</th>
+                                <th style="width: 30%">Jenjang</th>
                                 <td>{{$program->edulevel->name}}</td>
                             </tr>
                             <tr>
-                                <th>Program</th>
+                                <th>Nama Sekolah</th>
                                 <td>{{$program->name}}</td>
                             </tr>
                             <tr>
-                                <th>Student Price</th>
+                                <th>Harga Uang Gedung</th>
                                 <td>{{$program->student_price}}</td>
                             </tr>
                             <tr>
-                                <th>Student Max</th>
+                                <th>Maksimal Murid </th>
                                 <td>{{$program->student_max}}</td>
                             </tr>
                             <tr>

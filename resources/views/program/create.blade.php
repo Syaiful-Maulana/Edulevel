@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'Edulevel')
+@section('title', 'Program')
 
 @section('breadcrumbs')
 <div class="breadcrumbs">
